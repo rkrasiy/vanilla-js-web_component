@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Component</title>
+  <script src="modal.js"></script>
+</head>
+<body>
+  <rk-modal>
+    <h1 slot="title">Please Confirm</h1>
+    <p>With your confirmation you igree to pay</p>
+  </rk-modal>
+  <button id="open-modal">Open Modal</button>
+  <script>
+    const button = document.querySelector('#open-modal');
+    const modal = document.querySelector('rk-modal');
+      button.addEventListener('click', ()=>{
+        if(!modal.isOpen){
+          modal.open();
+          console.log('Opening...');
+        }
+      });
+
+      modal.addEventListener('confirm', ()=>{
+        console.log('Confirmed...')
+      })
+      modal.addEventListener('cancel', ()=>{
+        console.log('Canceled...')
+      })
+  </script>
+</body>
+</html>
